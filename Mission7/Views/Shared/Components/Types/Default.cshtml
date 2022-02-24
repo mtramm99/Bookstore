@@ -3,9 +3,13 @@
 
 @model IEnumerable<string>
 
-<a asp-controller="Home" asp-action="Index">Home</a>
+<div class="d-grid grid-2">
+    <a asp-controller="Home" asp-action="Index" asp-route-bookType="" asp-route-pageNum="1" class="btn btn-outline-secondary">Home</a>
 
-@foreach (string b in Model)
-{
-    <a asp-controller="Home" asp-action="Index" asp-route-bookType="@b">@b</a>
-}
+
+    @foreach (string b in Model)
+    {
+        <a asp-controller="Home" asp-action="Index" asp-route-bookType="@b"  asp-route-pageNum="1"
+           class="btn @(ViewBag.Selected == b ? "btn-primary" : "btn-outline-secondary")">@b</a>
+    }
+</div>

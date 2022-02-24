@@ -34,6 +34,8 @@ namespace Bookstore
            });
 
             services.AddScoped<IBookstoreRepository, EFBookstoreRepository>();
+
+            services.AddRazorPages();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -51,12 +53,22 @@ namespace Bookstore
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(
-                    name: "Paging",
-                    pattern: "P{pageNum}",
-                    defaults: new { Controller = "Home", action = "Index" });
+                endpoints.MapControllerRoute("typepage",
+                    "{bookType}/Page{pageNum}",
+                    new { Controller = "Home", action = "Index" });
+
+                endpoints.MapControllerRoute("Paging", 
+                    "Page{pageNum}", 
+                    new { Controller = "Home", action = "Index", pageNum = 1 });
+
+
+                endpoints.MapControllerRoute("type",
+                    "{bookType}",
+                    new { Controller = "Home", action = "Index", pageNum = 1 });
 
                 endpoints.MapDefaultControllerRoute();
+
+                endpoints.MapRazorPages();
             });
         }
     }

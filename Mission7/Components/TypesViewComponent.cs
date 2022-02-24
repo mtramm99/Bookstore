@@ -18,6 +18,8 @@ namespace Bookstore.Components
 
         public IViewComponentResult Invoke()
         {
+            ViewBag.SelectedTypes = RouteData?.Values["bookTypes"];
+
             var types = repo.Books
                 .Select(x => x.Category)
                 .Distinct()
