@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Bookstore.Models
 {
-    public class IPurchaseRepository
+    public interface IPurchaseRepository
     {
         IQueryable<Purchase> Purchases { get; }
 
