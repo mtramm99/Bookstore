@@ -6,6 +6,7 @@ namespace Bookstore.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+
             // Commented out creation of books table so Purchases table can be added 
             //migrationBuilder.CreateTable(
             //    name: "Books",
